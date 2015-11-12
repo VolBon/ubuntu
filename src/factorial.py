@@ -5,4 +5,4 @@ def factorial(x):
         total = total * factorial(x-1)
     return total
 n = int(raw_input("Please enter any number and we will count it's factorial: "))
-print "The answer to everything is ", factorial(n)
+print "The answer to everything is 42 and...", factorial(n)
