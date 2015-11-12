@@ -1,4 +1,4 @@
-
+import random
 
 def name_to_num(name):
     if name == "rock":
