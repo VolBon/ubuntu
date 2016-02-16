@@ -1,26 +1,32 @@
 from selenium import webdriver
-from selenium.common.exceptions import TimeoutException
-from selenium.webdriver.support.ui import WebDriverWait # available since 2.4.0
-from selenium.webdriver.support import expected_conditions as EC # available since 2.26.0
 
 import ConfigParser
 
 Config = ConfigParser.ConfigParser()
 Config.read("params.ini")
-customer_area = str(Config.get('Section1', 'customer_area'))
+lst = dict(Config.items('Section1'))
+#print lst
 
-# Create a new instance of the Firefox driver
+# Create a new instance of the Firefox driver and launch the start page
 driver = webdriver.Firefox()
-
-# go to the google home page
 driver.get("http://www.tieto.pl/")
 
-# the page is ajaxy so the title is originally this:
-print driver.title
+#print driver.title
 
 # find the element that's name attribute is q (the google search box)
-inputElement = driver.find_element_by_id(customer_area)
-inputElement.click()
+for key, value in lst.iteritems():
+    #print key, value
+    try:
+        inputElement = driver.find_element_by_xpath(value)
+    except:
+        print value
+        continue
+    else:
+        inputElement.click()
+        driver.save_screenshot(key+'.png')
+    driver.execute_script("window.history.go(-1)")
+
+driver.close()
 # # type in the search
 # inputElement.send_keys("cheese")
 #

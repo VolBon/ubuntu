@@ -22,7 +22,7 @@ arcinfo = os.stat('Arch.tar.gz').st_size
 print arcinfo, 'bytes'
 
 
-"""
+'''
 f_in = open('codeacademy')
 f_out = gzip.open('box.gz', 'wb')
 f_out.writelines(f_in)
@@ -31,4 +31,4 @@ f_in.close()
 
 arcinfo = os.stat('box.gz').st_size
 print arcinfo, 'bytes'
-"""
+'''
