@@ -3,6 +3,14 @@ from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait # available since 2.4.0
 from selenium.webdriver.support import expected_conditions as EC # available since 2.26.0
 
+# import ConfigParser
+#
+# Config = ConfigParser.ConfigParser()
+# Config.read("params.ini")
+# HOST = str(Config.get('Section1', 'HOST'))
+# user = str(Config.get('Section1', 'user'))
+# password = str(Config.get('Section1', 'password'))
+
 # Create a new instance of the Firefox driver
 driver = webdriver.Firefox()
 
