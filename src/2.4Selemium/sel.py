@@ -1,44 +1,36 @@
 from selenium import webdriver
-
 import ConfigParser
 
 Config = ConfigParser.ConfigParser()
 Config.read("params.ini")
-lst = dict(Config.items('Section1'))
-#print lst
+lst = Config.items('Section1')
 
-# Create a new instance of the Firefox driver and launch the start page
-driver = webdriver.Firefox()
-driver.get("http://www.tieto.pl/")
+def page_clicker(param):
+    output = ''
+    driver = webdriver.Firefox()
+    driver.get("http://www.ted.com/")
+    for key, path in param:
+        try:
+            inputElement = driver.find_element_by_xpath(path)
+        except:
+            print path
+        else:
+            inputElement.click()
+            driver.save_screenshot(key+'.png')
+            output += '''\n<br><p3>'''+driver.title+'''<br>'''
+            output += '''\n<br><img src="'''+key+'''.png"><br>'''
+    driver.close()
+    return output
 
-#print driver.title
+def main():
+    Html_file= open("log.html","w")
+    Html_file.write('''<html>
+            <body>''')
+    output = page_clicker(lst)
+    Html_file.write(output)
+    Html_file.write('''</body>
+        </html>''')
+    Html_file.close()
 
-# find the element that's name attribute is q (the google search box)
-for key, value in lst.iteritems():
-    #print key, value
-    try:
-        inputElement = driver.find_element_by_xpath(value)
-    except:
-        print value
-        continue
-    else:
-        inputElement.click()
-        driver.save_screenshot(key+'.png')
-    driver.execute_script("window.history.go(-1)")
-
-driver.close()
-# # type in the search
-# inputElement.send_keys("cheese")
-#
-# # submit the form (although google automatically searches now without submitting)
-# inputElement.submit()
-#
-# try:
-#     # we have to wait for the page to refresh, the last thing that seems to be updated is the title
-#     WebDriverWait(driver, 10).until(EC.title_contains("cheese"))
-#
-#     # You should see "cheese! - Google Search"
-#     print driver.title
-#
-# finally:
-#     driver.quit()
+if __name__ == "__main__":
+    main()
