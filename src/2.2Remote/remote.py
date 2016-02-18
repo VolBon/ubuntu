@@ -12,15 +12,10 @@ Config.read("params.ini")
 HOST = str(Config.get('Section1', 'HOST'))
 user = str(Config.get('Section1', 'user'))
 password = str(Config.get('Section1', 'password'))
-# HOST = "10.28.3.113"
-# user = 'bon'
-# password = 'chupamela'
-print HOST, user, password
 
 def remote(command):
     global HOST, user, password
-    logging.basicConfig(filename='example.log',level=logging.INFO)
-
+    logging.basicConfig(filename='log.log',filemode='w',level=logging.INFO)
     tn = telnetlib.Telnet(HOST)
     tn.read_until("login: ")
     tn.write(user + "\n")
@@ -28,12 +23,15 @@ def remote(command):
         tn.read_until("Password: ")
         tn.write(password + "\n")
 
-    command = command+'\n'
-    tn.write(command)
+    logging.info("Command executed: "+command)
+
+    tn.write(command+'\n')
     time.sleep(1)
-    logging.info(tn.read_very_eager().splitlines()[:-1])
+    output = tn.read_very_eager()
+    output = output.split(':~$ ')[-2]
+    #print output
+    logging.info("Output: "+output)
     tn.write("exit\n")
-    #logging.info(tn.read_all())
 
 def csv_reader(filename):
     with open(filename, 'rb') as f:

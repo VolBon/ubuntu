@@ -1,2 +1,3 @@
 import remote
 
+remote.main()
