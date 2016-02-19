@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<testCase duration="0.011" fail="0" name="SET-201" pass="1" startdate="20160216" starttime="085934">
+	<block fail="0" pass="0"/>
+	<block fail="0" pass="0"/>
+	<block fail="0" pass="1">
+		<call fail="0" pass="1">functions.compareValues(vars.tupInt[0], 2)</call>
+		<call fail="0" pass="1">functions.compareValues(vars.tupInt[1], 3)</call>
+		<call fail="0" pass="1">functions.compareValues(vars.tupInt[2], 4)</call>
+		<call fail="0" pass="1">functions.compareValues(vars.tupFloat[0], 2.2)</call>
+		<call fail="0" pass="1">functions.compareValues(vars.tupFloat[1], 4.4)</call>
+		<call fail="0" pass="1">functions.compareValues(vars.tupFloat[2], 5.5)</call>
+		<call fail="0" pass="1">functions.compareValues(vars.tupString[0], 'ala')</call>
+		<call fail="0" pass="1">functions.compareValues(vars.tupString[1], 'ma')</call>
+		<call fail="0" pass="1">functions.compareValues(vars.tupString[2], 'kota')</call>
+	</block>
+	<block fail="0" pass="0"/>
+</testCase>

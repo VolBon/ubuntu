@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<testCase duration="0.002" fail="0" name="SET-227" pass="1" startdate="20160218" starttime="122140">
+	<block fail="0" pass="0"/>
+	<block fail="0" pass="0"/>
+	<block fail="0" pass="0">
+		<call fail="0" pass="0">functions.returnVal(123)</call>
+		<call fail="0" pass="0">functions.varCheck(&quot;vars.a&quot;, vars.a, 123)</call>
+		<call fail="0" pass="0">function.returnVal(None)</call>
+		<call fail="0" pass="0">functions.varCheck(&quot;vars.a&quot;, vars.a, None)</call>
+	</block>
+	<block fail="0" pass="0"/>
+</testCase>

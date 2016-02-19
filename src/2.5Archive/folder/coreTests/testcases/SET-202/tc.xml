@@ -1,0 +1,35 @@
+<?xml version="1.0" ?>
+<!DOCTYPE testCase SYSTEM "tc_dtd.xml">
+<testCase version="0.1">
+    <scmId />
+    <name>SET-202</name>
+    <metadata>
+        <author>romaomic</author>
+        <externalData />
+        <approver />
+        <modifier />
+    </metadata>
+    <tags/>
+    <description/>
+    
+    <vars>
+        <var name="dicInt">{'k1': 2,'k2': 3,'k3': 4}</var>
+        <var name="dicFloat">{'k1': 2.2,'k2': 4.4,'k3': 5.5}</var>
+        <var name="dicString">{'k1': 'ala','k2': 'ma','k3': 'kota'}</var>
+    </vars>
+    
+    <block id="tb_1" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="exit" onErrorID="" phase="prerequisites" state="enabled"/>
+    <block id="tb_2" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="ignore" onErrorID="" phase="setup" state="enabled"/>
+    <block id="tb_3" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="ignore" onErrorID="" phase="execution" state="enabled">
+        <run id="tf_3.2" state="enabled">functions.compareValues( vars.dicInt['k1'], 2 )</run>
+        <run id="tf_3.2" state="enabled">functions.compareValues( vars.dicInt['k2'], 3 )</run>
+        <run id="tf_3.2" state="enabled">functions.compareValues( vars.dicInt['k3'], 4 )</run>
+        <run id="tf_3.2" state="enabled">functions.compareValues( vars.dicFloat['k1'], 2.2 )</run>
+        <run id="tf_3.2" state="enabled">functions.compareValues( vars.dicFloat['k2'], 4.4 )</run>
+        <run id="tf_3.2" state="enabled">functions.compareValues( vars.dicFloat['k3'], 5.5 )</run>
+        <run id="tf_3.2" state="enabled">functions.compareValues( vars.dicString['k1'], 'ala' )</run>
+        <run id="tf_3.2" state="enabled">functions.compareValues( vars.dicString['k2'], 'ma' )</run>
+        <run id="tf_3.2" state="enabled">functions.compareValues( vars.dicString['k3'], 'kota' )</run>
+    </block>
+    <block id="tb_4" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="ignore" onErrorID="" phase="postconditions" state="enabled"/>
+</testCase>

@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<testCase duration="0.003" fail="0" name="SET-203" pass="1" startdate="20160218" starttime="125405">
+	<block fail="0" pass="0"/>
+	<block fail="0" pass="0"/>
+	<block fail="0" pass="1">
+		<call fail="0" pass="1">functions.compareValues(vars.multiDimArr[0][0], 1)</call>
+		<call fail="0" pass="1">functions.compareValues(vars.multiDimArr[0][1], 2)</call>
+		<call fail="0" pass="1">functions.compareValues(vars.multiDimArr[0][2], 3)</call>
+		<call fail="0" pass="1">functions.compareValues(vars.multiDimArr[1][0], 2.1)</call>
+		<call fail="0" pass="1">functions.compareValues(vars.multiDimArr[1][1], 2.2)</call>
+		<call fail="0" pass="1">functions.compareValues(vars.multiDimArr[1][2], 2.3)</call>
+		<call fail="0" pass="1">functions.compareValues(vars.multiDimArr[2]['k1'], 'ala')</call>
+		<call fail="0" pass="1">functions.compareValues(vars.multiDimArr[2]['k2'], 'ma')</call>
+		<call fail="0" pass="1">functions.compareValues(vars.multiDimArr[2]['k3'], 'kota')</call>
+	</block>
+	<block fail="0" pass="0"/>
+</testCase>

@@ -1,0 +1,35 @@
+<?xml version="1.0" ?>
+<!DOCTYPE testCase SYSTEM "tc_dtd.xml">
+<testCase version="0.1">
+    <scmId />
+    <name>SET-201</name>
+    <metadata>
+        <author>romaomic</author>
+        <externalData />
+        <approver />
+        <modifier />
+    </metadata>
+    <tags/>
+    <description/>
+    
+    <vars>
+        <var name="tupInt">(2,3,4)</var>
+        <var name="tupFloat">(2.2,4.4,5.5)</var>
+        <var name="tupString">('ala','ma','kota')</var>
+    </vars>
+    
+    <block id="tb_1" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="exit" onErrorID="" phase="prerequisites" state="enabled"/>
+    <block id="tb_2" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="ignore" onErrorID="" phase="setup" state="enabled"/>
+    <block id="tb_3" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="ignore" onErrorID="" phase="execution" state="enabled">
+        <run id="tf_3.2" state="enabled">functions.compareValues( vars.tupInt[0], 2 )</run>
+        <run id="tf_3.2" state="enabled">functions.compareValues( vars.tupInt[1], 3 )</run>
+        <run id="tf_3.2" state="enabled">functions.compareValues( vars.tupInt[2], 4 )</run>
+        <run id="tf_3.2" state="enabled">functions.compareValues( vars.tupFloat[0], 2.2 )</run>
+        <run id="tf_3.2" state="enabled">functions.compareValues( vars.tupFloat[1], 4.4 )</run>
+        <run id="tf_3.2" state="enabled">functions.compareValues( vars.tupFloat[2], 5.5 )</run>
+        <run id="tf_3.2" state="enabled">functions.compareValues( vars.tupString[0], 'ala' )</run>
+        <run id="tf_3.2" state="enabled">functions.compareValues( vars.tupString[1], 'ma' )</run>
+        <run id="tf_3.2" state="enabled">functions.compareValues( vars.tupString[2], 'kota' )</run>
+    </block>
+    <block id="tb_4" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="ignore" onErrorID="" phase="postconditions" state="enabled"/>
+</testCase>

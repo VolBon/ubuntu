@@ -1,0 +1,34 @@
+<?xml version="1.0" ?>
+<!DOCTYPE testCase SYSTEM "tc_dtd.xml">
+<testCase version="0.1">
+    <scmId />
+    <name>SET-222</name>
+    <metadata>
+        <author>bonetvol</author>
+    </metadata>
+    <tags/>
+    <description> Check if the onErrorID attribute in test block jumps into specific Error Handler block, after that testcase runs normally.</description>
+    <vars>
+        <var name="a">''</var>
+    </vars>
+
+    <block id="tb_1" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="exit" onErrorID="" phase="prerequisites" state="enabled">
+    </block>
+    <block id="tb_2" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="ignore" onErrorID="" phase="setup" state="enabled">
+    </block>
+	<block id="tb_3" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="ignore" onErrorID="" phase="execution" state="enabled">
+        <block id="tb_3_1" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="ignore" onErrorID="tf_1000" state="enabled">
+            <run id="tf_2.1" output="" state="enabled" target="">functions.raiseError('Intentional exception in execution phase')</run>
+        </block>
+        <block id="tb_3_2" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="ignore" onErrorID="" state="enabled">
+            <run id="tf_3_2_1" output="vars.a" state="enabled" target="">functions.addValues(vars.a, "B")</run>
+        </block>
+        <block id="tb_3_3" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="" onErrorID="3_1" state="errorHandler">
+            <run id="tf_1000" output="vars.a" state="enabled" target="">functions.addValues(vars.a, "A")</run>
+        </block>
+    </block>
+    <block id="tb_4" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="ignore" onErrorID="" phase="postconditions" state="enabled">
+        <!-- Check if correct sequence was executed. First OnError block, then all other blocks. -->
+        <run id="4_1" output="" state="enabled" target="">functions.compareValues(vars.a, "AB")</run>
+    </block>
+</testCase>

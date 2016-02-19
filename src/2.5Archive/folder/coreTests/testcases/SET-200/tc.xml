@@ -1,0 +1,32 @@
+<?xml version="1.0" ?>
+<!DOCTYPE testCase SYSTEM "tc_dtd.xml">
+<testCase version="0.1">
+    <scmId />
+    <name>SET-200</name>
+    <metadata>
+        <author>romaomic</author>
+        <externalData />
+        <approver />
+        <modifier />
+    </metadata>
+    <tags/>
+    <description>Check if basic TiGear keywords work (e.g. from tai lib: Pause, Write)</description>
+    
+    <vars>
+        <var name="a">[7,2,3,4]</var>
+    </vars>
+    
+    <block id="tb_1" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="exit" onErrorID="" phase="prerequisites" state="enabled"/>
+    <block id="tb_2" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="ignore" onErrorID="" phase="setup" state="enabled"/>
+    <block id="tb_3" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="ignore" onErrorID="" phase="execution" state="enabled">
+        <run id="tf_3.1" state="enabled">functions.check_tai_pause()</run>
+        <run id="tf_3.1" state="enabled">functions.check_tai_getExceptionDesc()</run>
+        <run id="tf_3.1" state="enabled">functions.check_tai_write()</run>
+        <run id="tf_3.1" state="enabled">functions.check_tai_getExecutionDataFolder()</run>
+        <run id="tf_3.1" state="enabled">functions.checkLoopsUsingCounter(20,LOOPINDEX)</run>
+        <!--<run id="tf_3.1" state="enabled">functions.checkLoopsUsingIterator(vars.a,0,7)</run>-->
+        <run id="tf_3.1" state="enabled">functions.check_tai_clearStoredObjects(0.01)</run>
+        
+    </block>
+    <block id="tb_4" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="ignore" onErrorID="" phase="postconditions" state="enabled"/>
+</testCase>

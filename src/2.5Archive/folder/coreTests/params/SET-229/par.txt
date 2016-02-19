@@ -1,0 +1,3 @@
+par.a=2.2
+par.b='string'
+par.c=5

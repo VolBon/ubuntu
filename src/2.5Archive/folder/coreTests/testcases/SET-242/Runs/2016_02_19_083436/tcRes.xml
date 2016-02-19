@@ -1,0 +1,39 @@
+<?xml version="1.0" ?>
+<testCase duration="0.274" fail="0" name="SET-242" pass="1" startdate="20160219" starttime="083436">
+	<block fail="0" pass="0"/>
+	<block fail="0" pass="0"/>
+	<block fail="0" pass="3">
+		<call fail="0" pass="3">functions.returnVal(len(vars._LOOP))</call>
+		<call fail="0" pass="3">functions.compareValues(vars._LEVEL_0_inside, LOOPITEM)</call>
+		<call fail="0" pass="3">functions.compareValues(vars._LEVEL_0_inside, loopItem(0))</call>
+		<block fail="0" pass="9">
+			<call fail="0" pass="9">functions.compareValues(vars._LEVEL_0_inside, loopItem(1))</call>
+			<call fail="0" pass="9">functions.compareValues(vars._LEVEL_1_inside, LOOPITEM)</call>
+			<call fail="0" pass="9">functions.compareValues(vars._LEVEL_1_inside, loopItem(0))</call>
+			<block fail="0" pass="27">
+				<call fail="0" pass="27">functions.compareValues(vars._LEVEL_0_inside, loopItem(2))</call>
+				<call fail="0" pass="27">functions.compareValues(vars._LEVEL_1_inside, loopItem(1))</call>
+				<call fail="0" pass="27">functions.compareValues(vars._LEVEL_2_inside, LOOPITEM)</call>
+				<call fail="0" pass="27">functions.compareValues(vars._LEVEL_2_inside, loopItem(0))</call>
+				<block fail="0" pass="81">
+					<call fail="0" pass="81">functions.compareValues(vars._LEVEL_0_inside, loopItem(3))</call>
+					<call fail="0" pass="81">functions.compareValues(vars._LEVEL_1_inside, loopItem(2))</call>
+					<call fail="0" pass="81">functions.compareValues(vars._LEVEL_2_inside, loopItem(1))</call>
+					<call fail="0" pass="81">functions.compareValues(vars._LEVEL_3_inside, LOOPITEM)</call>
+					<call fail="0" pass="81">functions.compareValues(vars._LEVEL_3_inside, loopItem(0))</call>
+					<call fail="0" pass="81">functions.addValues(vars._LEVEL_3_inside, vars._STEP)</call>
+				</block>
+				<call fail="0" pass="27">functions.compareValues(vars._LEVEL_3_inside, vars._ARRAY_LENGTH)</call>
+				<call fail="0" pass="27">functions.returnVal(0)</call>
+				<call fail="0" pass="27">functions.addValues(vars._LEVEL_2_inside, vars._STEP)</call>
+			</block>
+			<call fail="0" pass="9">functions.compareValues(vars._LEVEL_2_inside, vars._ARRAY_LENGTH)</call>
+			<call fail="0" pass="9">functions.returnVal(0)</call>
+			<call fail="0" pass="9">functions.addValues(vars._LEVEL_1_inside, vars._STEP)</call>
+		</block>
+		<call fail="0" pass="3">functions.compareValues(vars._LEVEL_1_inside, vars._ARRAY_LENGTH)</call>
+		<call fail="0" pass="3">functions.returnVal(0)</call>
+		<call fail="0" pass="3">functions.addValues(vars._LEVEL_0_inside, vars._STEP)</call>
+	</block>
+	<block fail="0" pass="0"/>
+</testCase>

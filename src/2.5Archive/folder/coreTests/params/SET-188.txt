@@ -1,0 +1,3 @@
+import ./SET-188/par.txt
+import ./SET-188/nestedPar1/par.txt
+import ./SET-188/nestedPar2/nestedPar3/par.txt

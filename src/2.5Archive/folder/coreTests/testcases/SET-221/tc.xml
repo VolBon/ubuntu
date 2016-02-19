@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<!DOCTYPE testCase SYSTEM "tc_dtd.xml">
+<testCase version="0.1">
+    <scmId />
+    <name>SET-221</name>
+    <metadata>
+        <author>bonetvol</author>
+    </metadata>
+    <tags/>
+    <description>Check state attribute in test block: "enabled", "disabled".</description>
+    <vars>
+        <var name="a">''</var>
+    </vars>
+
+    <block id="tb_1" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="exit" onErrorID="" phase="prerequisites" state="enabled">
+    </block>
+    <block id="tb_2" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="ignore" onErrorID="" phase="setup" state="enabled">
+    </block>
+	<block id="tb_3" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="ignore" onErrorID="" phase="execution" state="enabled">
+        <block id="tb_3" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="ignore" onErrorID="" state="enabled">
+            <run id="tf_3.1" output="vars.a" state="enabled" target="">functions.addValues(vars.a, "A")</run>
+        </block>
+        <block id="tb_3" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="ignore" onErrorID="" state="disabled">
+            <run id="tf_2.1" output="" state="enabled" target="">functions.raiseError('Should not be executed.')</run>
+        </block>
+    </block>
+    <block id="tb_4" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="ignore" onErrorID="" phase="postconditions" state="enabled">
+        <run id="tf_3.1" output="" state="disabled" target="">functions.compareValues(vars.a, "A")</run>
+    </block>
+</testCase>

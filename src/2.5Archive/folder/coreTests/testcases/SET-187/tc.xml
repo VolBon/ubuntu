@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+<!DOCTYPE testCase SYSTEM "tc_dtd.xml">
+<testCase version="0.1">
+    <scmId />
+    <name>SET-187</name>
+    <metadata>
+        <author>bonetvol</author>
+    </metadata>
+    <tags/>
+    <description>If "SETUP" block fails, skip "EXECUTION" block and run '''POSTCONDITIONS'.</description>
+    <vars>
+        <var name="_LEVEL_0_summarized">0</var>
+    </vars>
+    <block id="tb_1" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="exit" onErrorID="" phase="prerequisites" state="enabled">
+    </block>
+    <block id="tb_2" loop="1" maxCount="-1" maxSeconds="-1" minCount="100" minSeconds="1" onError="exit" onErrorID="" phase="setup" state="enabled">
+        <run id="tf_2.1" output="" state="enabled" target="">functions.raiseError('Intentional exception in setup phase')</run>
+        <run id="tf_3.2" output="_LEVEL_0_summarized" state="enabled">functions.addValues(vars._LEVEL_0_summarized, 1)</run>
+    </block>
+    <block id="tb_3" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="ignore" onErrorID="" phase="execution" state="enabled">
+        <run id="tf_3.1" output="" state="enabled" target="">functions.raiseError('Execution phase should not be executed')</run>
+    </block>
+    <block id="tb_4" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="ignore" onErrorID="" phase="postconditions" state="enabled">
+        <!-- This error means that test work ok -->
+        <block id="tb_3.6" condition="vars._LEVEL_0_summarized == 0" loop="1" state="enabled">
+            <run id="tf_3.1" output="" state="enabled" target="">functions.raiseError('Test work ok')</run>
+        </block>
+    </block>
+</testCase>

@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<testCase duration="0.007" fail="0" name="SET-207" pass="1" startdate="20160216" starttime="085934">
+	<block fail="0" pass="0"/>
+	<block fail="0" pass="0"/>
+	<block fail="0" pass="1">
+		<call fail="0" pass="1">functions.returnVal(vars.a.append(vars.v_int))</call>
+		<call fail="0" pass="1">functions.returnVal(vars.a.append(vars.v_float))</call>
+		<call fail="0" pass="1">functions.returnVal(vars.a.append(vars.v_string))</call>
+		<call fail="0" pass="1">functions.varCheck(&quot;compare variables&quot;, vars.a, vars.b)</call>
+	</block>
+	<block fail="0" pass="0"/>
+</testCase>

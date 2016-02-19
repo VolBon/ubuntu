@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+<!DOCTYPE testCase SYSTEM "tc_dtd.xml">
+<testCase version="0.1">
+    <scmId />
+    <name>SET-249</name>
+    <metadata>
+        <author>bonetvol</author>
+    </metadata>
+    <tags/>
+    <description>Check CONTINUE "ON ERROR" attribute in test blocks.</description>
+    <vars />
+
+    <block id="tb_1" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="exit" onErrorID="" phase="prerequisites" state="enabled">
+    </block>
+    <block id="tb_2" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="ignore" onErrorID="" phase="setup" state="enabled">
+    </block>
+	<block id="tb_3" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="ignore" onErrorID="" phase="execution" state="enabled">
+        <block id="tb_3" loop="2" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="continue" onErrorID="" state="enabled">
+            <run id="tf_2.1" output="" state="enabled" target="">functions.raiseError('Intentional exception in execution phase')</run>
+            <run id="tf_2.2" output="" state="enabled" target="">functions.raiseError('Should not run')</run>
+        </block>
+        <block id="tb_3" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="ignore" onErrorID="" state="enabled">
+            <run id="tf_4.1" output="" state="enabled" target="">functions.raiseError('Intentional exception in execution phase')</run>
+        </block>
+    </block>
+    <block id="tb_4" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="ignore" onErrorID="" phase="postconditions" state="enabled">
+        <run id="tf_4.1" output="" state="enabled" target="">functions.raiseError('Intentional exception in postconditions phase')</run>
+    </block>
+</testCase>

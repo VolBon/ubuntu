@@ -1,0 +1,99 @@
+<?xml version="1.0" ?>
+<!DOCTYPE testCase SYSTEM "tc_dtd.xml">
+<testCase version="0.1">
+    <scmId />
+    <name>SET-234</name>
+    <metadata>
+        <author>jachimic</author>
+        <externalData />
+        <approver />
+        <modifier />
+    </metadata>
+    <tags/>
+    <description>Handle exception if none type, empty list or not right type variable is used as loop value in block</description>
+    <vars>
+        <var name="_LEVEL_1_inside">0</var>
+        <var name="BOOL_1">True</var>
+		<var name="INT_1">0</var>
+		<var name="INT_2">-1</var>
+		<var name="FLOAT_1">0.99</var>
+        <var name="FLOAT_2">0,1</var>
+        <var name="FLOAT_3">1.</var>
+        <var name="FLOAT_4">0,</var>
+		<var name="STRING_1">"true"</var>
+		<var name="TABLE_1">[]</var>
+		<var name="TABLE_2">[False, 0, 0.1, "false"]</var>
+		<var name="TUPLE_1">(True, 1, 1.1, "true")</var>
+		<var name="TUPLE_2">False, 0, 0.1, "false"</var>
+		<var name="NONE">None</var>
+    </vars>
+    <block id="tb_1" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="exit" onErrorID="" phase="prerequisites" state="enabled"/>
+    <block id="tb_2" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="ignore" onErrorID="" phase="setup" state="enabled"/>
+    <block id="tb_3" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="ignore" onErrorID="" phase="execution" state="enabled">
+        <!-- ### INT ### -->
+        <block id="tb_3.3" loop="vars.INT_1" state="enabled">
+            <run id="tf_3.2" state="enabled">functions.raiseError("Unexpected error INT_1")</run>
+        </block>
+        <block id="tb_3.3" loop="vars.INT_2" state="enabled">
+            <run id="tf_3.2" state="enabled">functions.raiseError("Unexpected error INT_2")</run>
+        </block>
+        <!-- ### FLOAT ### -->
+        <!-- print int(0.99) return 0 -->
+        <block id="tb_3.3" loop="vars.FLOAT_1" state="enabled">
+            <run id="tf_3.2" state="enabled">functions.raiseError("Unexpected error FLOAT")</run>
+        </block>
+        <!-- print int(0,99) return error, but TiGear read this like a tuple with two elements -->
+        <block id="tb_3.3" loop="vars.FLOAT_2" state="enabled">
+            <run id="tf_3.2" state="enabled">functions.raiseError("Expected error FLOAT_2")</run>
+        </block>
+        <!-- print int(0.) return 0 -->
+        <block id="tb_3.3" loop="vars.FLOAT_3" state="enabled">
+            <run id="tf_3.2" state="enabled">functions.raiseError("Expected error FLOAT_3")</run>
+        </block>
+        <!-- print - 0, - is used like tuple with one element (0, ), printed by tai.write looks like int 0, but block will run once -->
+        <block id="tb_3.3" loop="vars.FLOAT_4" state="enabled">
+            <run id="tf_3.2" state="enabled">functions.raiseError("Expected error FLOAT_4")</run>
+        </block>
+        <!-- ### TABLE & TUPLE ### -->
+        <block id="tb_3.2" loop="vars.TABLE_1" state="enabled">
+            <run id="tf_3.2" state="enabled">functions.raiseError("Unexpected error TABLE_1")</run>
+        </block>
+        <block id="tb_3.3" loop="vars.TUPLE_2" state="enabled">
+            <run id="tf_3.2" state="enabled">functions.raiseError("Expected error TUPLE_2")</run>
+        </block>
+        <!-- EXCEPTION TO IMPLEMENTATION
+        <block id="tb_3.1" loop="vars.NONE" state="enabled">
+            <run id="tf_3.1" state="enabled">tai.write("none type")</run>
+        </block>
+
+        <block id="tb_3.2" loop="vars.BOOL_1" state="enabled">
+        </block>
+
+        <block id="tb_3.2" loop="vars.STRING_1" state="enabled">
+        </block>
+
+        <var name="EMPTY"> </var>
+        <block id="tb_3.2" loop="vars.EMPTY" state="enabled">
+            <run id="tf_3.2" state="enabled">functions.raiseError("Unexpected error TABLE")</run>
+        </block>
+
+        -->
+
+        <!--
+        print int(0,99) return error, but TiGear read this like a tuple with two elements
+        <block id="tb_3.3" loop="vars.FLOAT_2" state="disabled">
+            LOOPINDEX and loopIndex(0)
+			<run id="tf_3.4" output="" state="enabled">functions.compareValues(vars._LEVEL_1_inside, LOOPINDEX)</run>
+			<run id="tf_3.5" output="" state="enabled">functions.compareValues(vars._LEVEL_1_inside, loopIndex(0))</run>
+            LOOPITEM and loopItem(0)
+			<run id="tf_3.5" output="" state="enabled">functions.compareValues(vars._LEVEL_1_inside, LOOPITEM)</run>
+			<run id="tf_3.6" output="" state="enabled">functions.compareValues(vars._LEVEL_1_inside, loopItem(0))</run>
+		    <run id="tf_3.24" output="_LEVEL_0_inside" state="enabled">functions.addValues(vars._LEVEL_1_inside, 1)</run>
+            <run id="tf_3.2" state="enabled">functions.raiseError("Expected error FLOAT_2")</run>
+        </block>
+        <run id="tf_3.23" output="_LEVEL_1_inside" state="enabled">functions.returnVal(0)</run>
+
+        -->
+    </block>
+    <block id="tb_4" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="ignore" onErrorID="" phase="postconditions" state="enabled"/>
+</testCase>

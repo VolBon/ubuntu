@@ -1,0 +1,45 @@
+<?xml version="1.0" ?>
+<!DOCTYPE testCase SYSTEM "tc_dtd.xml">
+<testCase version="0.1">
+	<scmId />
+	<name>SET-229</name>
+	<metadata>
+		<author>jachimic</author>
+		<externalData />
+		<approver />
+		<modifier />
+	</metadata>
+	<tags/>
+	<description>
+		Check "CONDITION" attribute in block. Block runs if conditional is true for different configurations and types of variables
+	</description>
+	<vars>
+		<var name="_STEP">1</var>
+		<var name="_LEVEL_1_inside">0</var>
+		<var name="BOOL_1">True</var>
+		<var name="BOOL_2">False</var>
+	</vars>
+	<block id="tb_1" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="exit" onErrorID="" phase="prerequisites" state="enabled"/>
+	<block id="tb_2" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="ignore" onErrorID="" phase="setup" state="enabled"/>
+	<block id="tb_3" loop="1" maxCount="4" maxSeconds="-1" minCount="2" minSeconds="-1" onError="ignore" onErrorID="" phase="execution" state="disabled">
+		<!-- Check if condition True -->
+		<block id="tb_3.6" condition="vars.BOOL_1" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="exit" onErrorID="" phase="" state="enabled">
+			<run id="tf_3.2" output="_LEVEL_1_inside" state="enabled">functions.addValues(vars._LEVEL_1_inside, vars._STEP)</run>
+		</block>
+		<run id="tf_3.2" output="_LEVEL_1_inside" state="enabled">functions.compareValues(vars._LEVEL_1_inside, 1)</run>
+		<run id="tf_3.2" output="_LEVEL_1_inside" state="enabled">functions.returnVal(0)</run>
+		<!-- Check if condition False -->
+		<block id="tb_3.6" condition="vars.BOOL_2" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="exit" onErrorID="" phase="" state="enabled">
+			<run id="tf_3.2" output="_LEVEL_1_inside" state="enabled">functions.addValues(vars._LEVEL_1_inside, vars._STEP)</run>
+		</block>
+		<run id="tf_3.2" output="_LEVEL_1_inside" state="enabled">functions.compareValues(vars._LEVEL_1_inside, 0)</run>
+		<run id="tf_3.2" output="_LEVEL_1_inside" state="enabled">functions.returnVal(0)</run>
+		<!-- Check if multi-condition True-->
+		<block id="tb_3.6" condition="vars.BOOL_1 &gt; False and vars.BOOL_1 == True" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="exit" onErrorID="" phase="" state="enabled">
+			<run id="tf_3.2" output="_LEVEL_1_inside" state="enabled">functions.addValues(vars._LEVEL_1_inside, vars._STEP)</run>
+		</block>
+		<run id="tf_3.2" output="_LEVEL_1_inside" state="enabled">functions.compareValues(vars._LEVEL_1_inside, 1)</run>
+		<run id="tf_3.2" output="_LEVEL_1_inside" state="enabled">functions.returnVal(0)</run>
+	</block>
+	<block id="tb_4" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="ignore" onErrorID="" phase="postconditions" state="enabled"/>
+</testCase>

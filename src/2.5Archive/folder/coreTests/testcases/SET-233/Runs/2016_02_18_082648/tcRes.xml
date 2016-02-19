@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<testCase duration="0.055" fail="0" name="SET-233" pass="1" startdate="20160218" starttime="082648">
+	<block fail="0" pass="0"/>
+	<block fail="0" pass="0"/>
+	<block fail="0" pass="1">
+		<block fail="0" pass="1">
+			<call fail="0" pass="1">functions.addValues(vars.a, 1)</call>
+		</block>
+		<block fail="0" pass="2">
+			<call fail="0" pass="2">tai.pause('pause', 'test', 0.01)</call>
+			<call fail="0" pass="2">functions.addValues(vars.b, 1)</call>
+		</block>
+		<block fail="0" pass="2">
+			<call fail="0" pass="2">tai.pause('pause', 'test', 0.01)</call>
+			<call fail="0" pass="2">functions.addValues(vars.c, 1)</call>
+		</block>
+	</block>
+	<block fail="0" pass="1">
+		<call fail="0" pass="1">functions.compareValues(vars.a, 1)</call>
+		<call fail="0" pass="1">functions.compareValues(vars.b, 2)</call>
+		<call fail="0" pass="1">functions.compareValues(vars.c, 2)</call>
+	</block>
+</testCase>

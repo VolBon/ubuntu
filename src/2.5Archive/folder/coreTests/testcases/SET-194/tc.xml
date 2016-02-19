@@ -1,0 +1,33 @@
+<?xml version="1.0" ?>
+<!DOCTYPE testCase SYSTEM "tc_dtd.xml">
+<testCase version="0.1">
+    <scmId />
+    <name>SET-194</name>
+    <metadata>
+        <author>bonetvol</author>
+    </metadata>
+    <tags/>
+    <description/>
+    <vars>
+        <var name="a">0</var>
+        <var name="b">1</var>
+        <var name="loop">[1,2,3,4,5]</var>
+    </vars>
+
+    <block id="tb_1" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="exit" onErrorID="" phase="prerequisites" state="enabled">
+    </block>
+    <block id="tb_2" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="ignore" onErrorID="" phase="setup" state="enabled">
+    </block>
+	<block id="tb_3" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="ignore" onErrorID="" phase="execution" state="enabled">
+        <block id="tb_3" loop="5" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="ignore" onErrorID="" state="enabled">
+            <run id="tf_3.1" output="" state="enabled" target="">functions.compareValues(LOOPINDEX, vars.a)</run>
+            <run id="tf_3.1" output="vars.a" state="enabled" target="">functions.addValues(vars.a, 1)</run>
+        </block>
+        <block id="tb_3" loop="vars.loop" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="ignore" onErrorID="" state="enabled">
+            <run id="tf_3.1" output="" state="enabled" target="">functions.compareValues(LOOPITEM, vars.b)</run>
+            <run id="tf_3.1" output="vars.b" state="enabled" target="">functions.addValues(vars.b, 1)</run>
+        </block>
+    </block>
+    <block id="tb_4" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="ignore" onErrorID="" phase="postconditions" state="enabled">
+    </block>
+</testCase>

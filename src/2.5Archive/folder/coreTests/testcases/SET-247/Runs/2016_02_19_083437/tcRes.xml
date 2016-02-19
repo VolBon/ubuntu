@@ -1,0 +1,49 @@
+<?xml version="1.0" ?>
+<testCase duration="4.037" fail="0" name="SET-247" pass="1" startdate="20160219" starttime="083437">
+	<block fail="0" pass="0"/>
+	<block fail="0" pass="0"/>
+	<block fail="0" pass="1">
+		<block fail="0" pass="2">
+			<call fail="0" pass="2">functions.addValues(vars._LEVEL_1_inside, vars._STEP)</call>
+			<block fail="0" pass="4">
+				<call fail="0" pass="4">functions.addValues(vars._LEVEL_2_inside, vars._STEP)</call>
+			</block>
+			<call fail="0" pass="2">functions.compareValues(vars._LEVEL_2_inside, 2)</call>
+			<call fail="0" pass="2">functions.returnVal(0)</call>
+		</block>
+		<call fail="0" pass="1">functions.compareValues(vars._LEVEL_1_inside, 2)</call>
+		<call fail="0" pass="1">functions.returnVal(0)</call>
+		<block fail="0" pass="2">
+			<call fail="0" pass="2">functions.addValues(vars._LEVEL_1_inside, vars._STEP)</call>
+			<block fail="0" pass="4">
+				<call fail="0" pass="4">functions.addValues(vars._LEVEL_2_inside, vars._STEP)</call>
+			</block>
+			<call fail="0" pass="2">functions.compareValues(vars._LEVEL_2_inside, 2)</call>
+			<call fail="0" pass="2">functions.returnVal(0)</call>
+		</block>
+		<call fail="0" pass="1">functions.compareValues(vars._LEVEL_1_inside, 2)</call>
+		<call fail="0" pass="1">functions.returnVal(0)</call>
+		<block fail="0" pass="2">
+			<call fail="0" pass="2">functions.addValues(vars._LEVEL_1_inside, vars._STEP)</call>
+			<block fail="0" pass="4">
+				<call fail="0" pass="4">functions.addValues(vars._LEVEL_2_inside, vars._STEP)</call>
+			</block>
+			<call fail="0" pass="2">functions.compareValues(vars._LEVEL_2_inside, 2)</call>
+			<call fail="0" pass="2">functions.returnVal(0)</call>
+		</block>
+		<call fail="0" pass="1">functions.compareValues(vars._LEVEL_1_inside, 2)</call>
+		<call fail="0" pass="1">functions.returnVal(0)</call>
+		<block fail="0" pass="1">
+			<call fail="0" pass="1">functions.addValues(vars._LEVEL_1_inside, vars._STEP)</call>
+			<block fail="0" pass="2">
+				<call fail="0" pass="2">functions.addValues(vars._LEVEL_2_inside, vars._STEP)</call>
+			</block>
+			<call fail="0" pass="1">functions.compareValues(vars._LEVEL_2_inside, 2)</call>
+			<call fail="0" pass="1">functions.returnVal(0)</call>
+		</block>
+		<call fail="0" pass="1">functions.returnVal(vars._LEVEL_1_inside &lt;= 3)</call>
+		<call fail="0" pass="1">functions.compareValues(vars._LEVEL_1_inside, True)</call>
+		<call fail="0" pass="1">functions.returnVal(0)</call>
+	</block>
+	<block fail="0" pass="0"/>
+</testCase>

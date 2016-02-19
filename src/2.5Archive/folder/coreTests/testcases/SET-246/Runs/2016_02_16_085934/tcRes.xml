@@ -1,0 +1,33 @@
+<?xml version="1.0" ?>
+<testCase duration="0.089" fail="0" name="SET-246" pass="1" startdate="20160216" starttime="085934">
+	<block fail="0" pass="0"/>
+	<block fail="0" pass="0"/>
+	<block fail="0" pass="2">
+		<call fail="0" pass="2">functions.addValues(vars._LEVEL_0_summarized, vars._STEP)</call>
+		<block fail="0" pass="4">
+			<call fail="0" pass="4">functions.addValues(vars._LEVEL_1_summarized, vars._STEP)</call>
+			<call fail="0" pass="4">functions.addValues(vars._LEVEL_1_inside, vars._STEP)</call>
+			<block fail="0" pass="8">
+				<call fail="0" pass="8">functions.addValues(vars._LEVEL_2_summarized, vars._STEP)</call>
+				<call fail="0" pass="8">functions.addValues(vars._LEVEL_2_inside, vars._STEP)</call>
+				<block fail="0" pass="16">
+					<call fail="0" pass="16">functions.addValues(vars._LEVEL_3_summarized, vars._STEP)</call>
+					<call fail="0" pass="16">functions.addValues(vars._LEVEL_3_inside, vars._STEP)</call>
+				</block>
+				<call fail="0" pass="8">functions.compareValues(vars._LEVEL_3_inside, 2)</call>
+				<call fail="0" pass="8">functions.returnVal(0)</call>
+			</block>
+			<call fail="0" pass="4">functions.compareValues(vars._LEVEL_2_inside, 2)</call>
+			<call fail="0" pass="4">functions.returnVal(0)</call>
+		</block>
+		<call fail="0" pass="2">functions.compareValues(vars._LEVEL_1_inside, 2)</call>
+		<call fail="0" pass="2">functions.returnVal(0)</call>
+	</block>
+	<block fail="0" pass="1">
+		<call fail="0" pass="1">tai.write(&quot;\n########################################\n### Check _LEVEL_X_summarized values ###\n########################################\n&quot;)</call>
+		<call fail="0" pass="1">functions.compareValues(vars._LEVEL_0_summarized, 2)</call>
+		<call fail="0" pass="1">functions.compareValues(vars._LEVEL_1_summarized, 4)</call>
+		<call fail="0" pass="1">functions.compareValues(vars._LEVEL_2_summarized, 8)</call>
+		<call fail="0" pass="1">functions.compareValues(vars._LEVEL_3_summarized, 16)</call>
+	</block>
+</testCase>

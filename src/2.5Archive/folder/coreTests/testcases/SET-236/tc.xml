@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+<!DOCTYPE testCase SYSTEM "tc_dtd.xml">
+<testCase version="0.1">
+    <scmId />
+    <name>SET-236</name>
+    <metadata>
+        <author>romaomic</author>
+        <externalData />
+        <approver />
+        <modifier />
+    </metadata>
+    <tags/>
+    <description/>
+    
+    <vars>
+        <var name="a">None</var>
+        <var name="b">None</var>
+    </vars>
+    
+    <block id="tb_1" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="exit" onErrorID="" phase="prerequisites" state="enabled"/>
+    <block id="tb_2" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="ignore" onErrorID="" phase="setup" state="enabled"/>
+    <block id="tb_3" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="ignore" onErrorID="" phase="execution" state="enabled">
+        <block id="tb_3.1" importedPath="..\..\coreTests\testcases\common\imp-236" loop="1" state="enabled" />
+        <run id="tf_3.1" state="enabled">functions.varCheck( "first variable", vars.a , None )</run>
+        <run id="tf_3.2" state="enabled">functions.varCheck( "second variable", vars.b , 'first' )</run>
+    </block>
+    <block id="tb_4" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="ignore" onErrorID="" phase="postconditions" state="enabled"/>
+</testCase>

@@ -1,0 +1,44 @@
+<?xml version="1.0" ?>
+<!DOCTYPE testCase SYSTEM "tc_dtd.xml">
+<testCase version="0.1">
+    <scmId />
+    <name>SET-182</name>
+    <metadata>
+        <author>romaomic</author>
+        <externalData />
+        <approver />
+        <modifier />
+    </metadata>
+    <tags/>
+    <description>Check whether the variables are loaded from data params.</description>
+    <vars>
+        <var name="i">data.i</var>
+        <var name="f">data.f</var>
+        <var name="b">data.b</var>
+        <var name="string1">data.string1</var>
+        <var name="string2">data.string2</var>
+        <var name="d">data.d</var>
+        <var name="t">data.t</var>
+        <var name="n">data.n</var>
+        <var name="list">data.list</var>
+        <var name="tuple">data.tuple</var>
+        <var name="dict">data.dict</var>
+    </vars>
+
+    <block id="tb_1" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="exit" onErrorID="" phase="prerequisites" state="enabled"/>
+    <block id="tb_2" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="ignore" onErrorID="" phase="setup" state="enabled"/>
+    <block id="tb_3" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="ignore" onErrorID="" phase="execution" state="enabled">
+        <run id="tf_3.1" state="enabled" target="">functions.compareValues( vars.i, 2)</run>
+        <run id="tf_3.2" state="enabled" target="">functions.compareValues( vars.f, 2.2)</run>
+        <run id="tf_3.3" state="enabled" target="">functions.compareValues( vars.b, True)</run>
+        <run id="tf_3.4" state="enabled" target="">functions.compareValues( vars.string1, 'string')</run>
+        <run id="tf_3.5" state="enabled" target="">functions.compareValues( vars.string2, "string")</run>
+        <run id="tf_3.6" state="enabled" target="">functions.compareValues( vars.d, 2005/12/14 )</run>
+        <run id="tf_3.7" state="enabled" target="">functions.compareValues( vars.t, '22:22:22' )</run>
+        <run id="tf_3.8" state="enabled" target="">functions.compareValues( vars.n, None )</run>
+        <run id="tf_3.8" state="enabled" target="">functions.compareValues( vars.list, [123, 3.14, 'ala'] )</run>
+        <run id="tf_3.8" state="enabled" target="">functions.compareValues( vars.tuple, (123, 3.14, "ma") )</run>
+        <run id="tf_3.8" state="enabled" target="">functions.compareValues( vars.dict, {'k1': 123, "k2": 3.14, 'k3': "kota"} )</run>
+    </block>
+    <block id="tb_4" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="ignore" onErrorID="" phase="postconditions" state="enabled"/>
+</testCase>

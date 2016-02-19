@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+<!DOCTYPE testCase SYSTEM "tc_dtd.xml">
+<testCase version="0.1">
+    <scmId />
+    <name>SET-211</name>
+    <metadata>
+        <author>romaomic</author>
+        <externalData />
+        <approver />
+        <modifier />
+    </metadata>
+    <tags/>
+    <description/>
+    
+    <vars>
+        <var name="a">[]</var>
+        <var name="b">()</var>
+        <var name="pat">[123, 3.14, 'passion']</var>
+    </vars>
+    
+    <block id="tb_1" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="exit" onErrorID="" phase="prerequisites" state="enabled"/>
+    <block id="tb_2" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="ignore" onErrorID="" phase="setup" state="enabled"/>
+    <block id="tb_3" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="ignore" onErrorID="" phase="execution" state="enabled">
+        <run id="tf_3.0" output="a" state="enabled">functions.returnVal(list(vars.b))</run>
+        <run id="tf_3.1" state="enabled">functions.returnVal(vars.a.append(123))</run>
+        <run id="tf_3.2" state="enabled">functions.returnVal(vars.a.append(3.14))</run>
+        <run id="tf_3.3" state="enabled">functions.returnVal(vars.a.append('passion'))</run>
+        <run id="tf_3.3" state="enabled">functions.varCheck('compare values', vars.a, vars.pat)</run>
+    </block>
+    <block id="tb_4" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="ignore" onErrorID="" phase="postconditions" state="enabled"/>
+</testCase>

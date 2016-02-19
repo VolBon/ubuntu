@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<testCase duration="0.002" fail="0" name="SET-224" pass="1" startdate="20160218" starttime="125405">
+	<block fail="0" pass="0"/>
+	<block fail="0" pass="0"/>
+	<block fail="0" pass="1">
+		<call fail="0" pass="1">functions.addValues(vars.a, &quot;A&quot;)</call>
+		<call fail="0" pass="0">functions.addValues(vars.a, &quot;B&quot;)</call>
+	</block>
+	<block fail="0" pass="1">
+		<call fail="0" pass="1">functions.compareValues(vars.a, &quot;A&quot;)</call>
+	</block>
+</testCase>

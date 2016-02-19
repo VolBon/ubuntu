@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<!DOCTYPE testCase SYSTEM "tc_dtd.xml">
+<testCase version="0.1">
+    <scmId />
+    <name>SET-205</name>
+    <metadata>
+        <author>romaomic</author>
+        <externalData />
+        <approver />
+        <modifier />
+    </metadata>
+    <tags/>
+    <description/>
+    
+    <vars>
+        <var name="tab">[]</var>
+        <var name="comArr">[1,2,3,4]</var>
+    </vars>
+    
+    <block id="tb_1" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="exit" onErrorID="" phase="prerequisites" state="enabled"/>
+    <block id="tb_2" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="ignore" onErrorID="" phase="setup" state="enabled"/>
+    <block id="tb_3" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="ignore" onErrorID="" phase="execution" state="enabled">
+        <run id="tf_3.1" state="enabled">functions.returnVal(vars.tab.append(1))</run>
+        <run id="tf_3.2" state="enabled">functions.returnVal(vars.tab.append(2))</run>
+        <run id="tf_3.3" state="enabled">functions.returnVal(vars.tab.append(3))</run>
+        <run id="tf_3.4" state="enabled">functions.returnVal(vars.tab.append(4))</run>
+        <run id="tf_3.5" state="enabled">functions.varCheck("compare variables", vars.tab, vars.comArr)</run>
+    </block>
+    <block id="tb_4" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="ignore" onErrorID="" phase="postconditions" state="enabled"/>
+</testCase>

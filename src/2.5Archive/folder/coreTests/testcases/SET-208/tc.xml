@@ -1,0 +1,39 @@
+<?xml version="1.0" ?>
+<!DOCTYPE testCase SYSTEM "tc_dtd.xml">
+<testCase version="0.1">
+    <scmId />
+    <name>SET-208</name>
+    <metadata>
+        <author>romaomic</author>
+        <externalData />
+        <approver />
+        <modifier />
+    </metadata>
+    <tags/>
+    <description/>
+    
+    <vars>
+        <var name="a">[
+        [1,2,3,4,5,6,7,8,9,10],
+        [11,12,13,14,15,16,17,18,19,20,
+        21,22,23,24,25,26,27,28,29,30],
+        [31,32,33,34,35,36,37,38,39,40,
+        41,42,43,44,45,46,47,48,49,50,
+        51,52,53,54,55,56,57,58,59,60],
+        [61,62,63,64,65,66,67,68,69,70,
+        71,72,73,74,75,76,77,78,79,80,
+        81,82,83,84,85,86,87,88,89,90,
+        91,92,93,94,95,96,97,98,99,100]
+        ]</var>
+    </vars>
+    
+    <block id="tb_1" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="exit" onErrorID="" phase="prerequisites" state="enabled"/>
+    <block id="tb_2" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="ignore" onErrorID="" phase="setup" state="enabled"/>
+    <block id="tb_3" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="ignore" onErrorID="" phase="execution" state="enabled">
+        <run id="tf_3.1" state="enabled">functions.compareValues(vars.a[0][0],1)</run>
+        <run id="tf_3.2" state="enabled">functions.compareValues(vars.a[3][39],100)</run>
+        <run id="tf_3.3" state="enabled">functions.compareValues(vars.a[1][5],16)</run>
+        <run id="tf_3.4" state="enabled">functions.compareValues(vars.a[2][28],59)</run>
+    </block>
+    <block id="tb_4" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="ignore" onErrorID="" phase="postconditions" state="enabled"/>
+</testCase>

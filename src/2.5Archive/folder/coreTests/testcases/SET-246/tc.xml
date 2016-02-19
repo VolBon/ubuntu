@@ -1,0 +1,87 @@
+<?xml version="1.0" ?>
+<!DOCTYPE testCase SYSTEM "tc_dtd.xml">
+<testCase version="0.1">
+	<scmId />
+	<name>SET-246</name>
+	<metadata>
+		<author>jachimic</author>
+		<externalData />
+		<approver />
+		<modifier />
+	</metadata>
+	<tags/>
+	<description>
+		Check minCount and maxCount attributes, when stop is executed in nested blocks.
+	</description>
+	<vars>
+		<var name="_STEP">1</var>
+		<var name="_LEVEL_0_summarized">0</var>
+		<var name="_LEVEL_1_summarized">0</var>
+		<var name="_LEVEL_2_summarized">0</var>
+		<var name="_LEVEL_3_summarized">0</var>
+		<var name="_LEVEL_0_inside">0</var>
+		<var name="_LEVEL_1_inside">0</var>
+		<var name="_LEVEL_2_inside">0</var>
+		<var name="_LEVEL_3_inside">0</var>
+	</vars>
+	<!--
+	Test will run maximum times set in loop or minCount, greater value will be used, but not more than maxCount.
+	loop		= 0
+	maxCount	= 4
+	minCount	= 2
+	means loop 2
+
+	time set is more important than amount of runs, and
+	minSeconds = 5 and loop=3 will run as long to have 5s, even if it means 200 loops
+	maxSeconds = will break loop in every moment when time's up
+	if everything will be done before minSeconds up, then process will wait for time's up, end next run something next
+
+	ORDER:
+	state, maxSeconds, minSeconds, condition, maxCount, minCount, loop
+	-->
+	<block id="tb_1" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="exit" onErrorID="" phase="prerequisites" state="enabled"/>
+	<block id="tb_2" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="ignore" onErrorID="" phase="setup" state="enabled"/>
+	<!-- Nested _LEVEL_0 -->
+	<block id="tb_3" loop="0" maxCount="-1" maxSeconds="-1" minCount="2" minSeconds="-1" onError="ignore" onErrorID="" phase="execution" state="enabled">
+		<!-- _summarized -->
+		<run id="tf_3.2" output="_LEVEL_0_summarized" state="enabled">functions.addValues(vars._LEVEL_0_summarized, vars._STEP)</run>
+		<!-- Nested _LEVEL_1 -->
+		<block id="tb_3.6" loop="0" maxCount="-1" maxSeconds="-1" minCount="2" minSeconds="-1" onError="exit" onErrorID="" phase="" state="enabled">
+			<!-- _summarized -->
+			<run id="tf_3.2" output="_LEVEL_1_summarized" state="enabled">functions.addValues(vars._LEVEL_1_summarized, vars._STEP)</run>
+			<!-- _inside -->
+			<run id="tf_3.2" output="_LEVEL_1_inside" state="enabled">functions.addValues(vars._LEVEL_1_inside, vars._STEP)</run>
+			<!-- Nested _LEVEL_2 -->
+			<block id="tb_3.6" loop="2" maxCount="-1" maxSeconds="-1" minCount="2" minSeconds="-1" onError="exit" onErrorID="" phase="" state="enabled">
+				<!-- _summarized -->
+				<run id="tf_3.2" output="_LEVEL_2_summarized" state="enabled">functions.addValues(vars._LEVEL_2_summarized, vars._STEP)</run>
+				<!-- _inside -->
+				<run id="tf_3.2" output="_LEVEL_2_inside" state="enabled">functions.addValues(vars._LEVEL_2_inside, vars._STEP)</run>
+				<!-- Nested _LEVEL_3 -->
+				<block id="tb_3.6" loop="2" maxCount="2" maxSeconds="-1" minCount="1" minSeconds="-1" onError="exit" onErrorID="" phase="" state="enabled">
+					<!-- _summarized -->
+					<run id="tf_3.2" output="_LEVEL_3_summarized" state="enabled">functions.addValues(vars._LEVEL_3_summarized, vars._STEP)</run>
+					<!-- _inside -->
+					<run id="tf_3.2" output="_LEVEL_3_inside" state="enabled">functions.addValues(vars._LEVEL_3_inside, vars._STEP)</run>
+				</block>
+				<!-- Check _LEVEL_3_inside values and reset -->
+				<run id="tf_3.2" output="_LEVEL_3_inside" state="enabled">functions.compareValues(vars._LEVEL_3_inside, 2)</run>
+				<run id="tf_3.2" output="_LEVEL_3_inside" state="enabled">functions.returnVal(0)</run>
+			</block>
+			<!-- Check _LEVEL_2_inside values and reset -->
+			<run id="tf_3.2" output="_LEVEL_2_inside" state="enabled">functions.compareValues(vars._LEVEL_2_inside, 2)</run>
+			<run id="tf_3.2" output="_LEVEL_2_inside" state="enabled">functions.returnVal(0)</run>
+		</block>
+		<!-- Check _LEVEL_1_inside values and reset -->
+		<run id="tf_3.2" output="_LEVEL_1_inside" state="enabled">functions.compareValues(vars._LEVEL_1_inside, 2)</run>
+		<run id="tf_3.2" output="_LEVEL_1_inside" state="enabled">functions.returnVal(0)</run>
+	</block>
+	<block id="tb_4" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="ignore" onErrorID="" phase="postconditions" state="enabled">
+		<!-- Check _LEVEL_X values -->
+		<run id="tf_3.17" output="" state="enabled" target="">tai.write("\n########################################\n### Check _LEVEL_X_summarized values ###\n########################################\n")</run>
+		<run id="tf_3.2" output="_LEVEL_0_summarized" state="enabled">functions.compareValues(vars._LEVEL_0_summarized, 2)</run>
+		<run id="tf_3.2" output="_LEVEL_0_summarized" state="enabled">functions.compareValues(vars._LEVEL_1_summarized, 4)</run>
+		<run id="tf_3.2" output="_LEVEL_0_summarized" state="enabled">functions.compareValues(vars._LEVEL_2_summarized, 8)</run>
+		<run id="tf_3.2" output="_LEVEL_0_summarized" state="enabled">functions.compareValues(vars._LEVEL_3_summarized, 16)</run>
+	</block>
+</testCase>

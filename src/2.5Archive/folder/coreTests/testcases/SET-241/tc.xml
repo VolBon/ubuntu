@@ -1,0 +1,73 @@
+<?xml version="1.0" ?>
+<!DOCTYPE testCase SYSTEM "tc_dtd.xml">
+<testCase version="0.1">
+	<scmId />
+	<name>SET-241</name>
+	<metadata>
+		<author>jachimic</author>
+		<externalData />
+		<approver />
+		<modifier />
+	</metadata>
+	<tags />
+	<description>
+		Check LOOPINDEX, loopIndex(0), and loopIndex(1-4) while running nested loops
+	</description>
+	<vars>
+		<var name="_STEP">1</var>
+		<var name="_LOOP">2</var>
+		<var name="_LEVEL_0_inside">0</var>
+		<var name="_LEVEL_1_inside">0</var>
+		<var name="_LEVEL_2_inside">0</var>
+		<var name="_LEVEL_3_inside">0</var>
+	</vars>
+	<block id="tb_1" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="exit" onErrorID="" phase="prerequisites" state="enabled" />
+	<block id="tb_2" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="ignore" onErrorID="" phase="setup" state="enabled" />
+	<!-- Nested _LEVEL_0 -->
+	<block id="tb_3" loop="vars._LOOP" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="ignore" onErrorID="" phase="execution" state="enabled">
+		<!-- LOOPINDEX and loopIndex(0) -->
+		<run id="tf_3.1" output="" state="enabled">functions.compareValues(vars._LEVEL_0_inside, LOOPINDEX)</run>
+		<run id="tf_3.2" output="" state="enabled">functions.compareValues(vars._LEVEL_0_inside, loopIndex(0))</run>
+		<!-- Nested _LEVEL_1 -->
+		<block id="tb_3.1" loop="vars._LOOP" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="exit" onErrorID="" phase="" state="enabled">
+			<!-- loopIndex(1) -->
+			<run id="tf_3.3" output="" state="enabled">functions.compareValues(vars._LEVEL_0_inside, loopIndex(1))</run>
+			<!-- LOOPINDEX and loopIndex(0) -->
+			<run id="tf_3.4" output="" state="enabled">functions.compareValues(vars._LEVEL_1_inside, LOOPINDEX)</run>
+			<run id="tf_3.5" output="" state="enabled">functions.compareValues(vars._LEVEL_1_inside, loopIndex(0))</run>
+			<!-- Nested _LEVEL_2 -->
+			<block id="tb_3.2" loop="vars._LOOP" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="exit" onErrorID="" phase="" state="enabled">
+				<!-- loopIndex(1-2) -->
+				<run id="tf_3.6" output="" state="enabled">functions.compareValues(vars._LEVEL_0_inside, loopIndex(2))</run>
+				<run id="tf_3.7" output="" state="enabled">functions.compareValues(vars._LEVEL_1_inside, loopIndex(1))</run>
+				<!-- LOOPINDEX and loopIndex(0) -->
+				<run id="tf_3.8" output="" state="enabled">functions.compareValues(vars._LEVEL_2_inside, LOOPINDEX)</run>
+				<run id="tf_3.9" output="" state="enabled">functions.compareValues(vars._LEVEL_2_inside, loopIndex(0))</run>
+				<!-- Nested _LEVEL_3 -->
+				<block id="tb_3.3" loop="vars._LOOP" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="exit" onErrorID="" phase="" state="enabled">
+					<!-- loopIndex(1-3) -->
+					<run id="tf_3.10" output="" state="enabled">functions.compareValues(vars._LEVEL_0_inside, loopIndex(3))</run>
+					<run id="tf_3.11" output="" state="enabled">functions.compareValues(vars._LEVEL_1_inside, loopIndex(2))</run>
+					<run id="tf_3.12" output="" state="enabled">functions.compareValues(vars._LEVEL_2_inside, loopIndex(1))</run>
+					<!-- LOOPINDEX and loopIndex(0) -->
+					<run id="tf_3.13" output="" state="enabled">functions.compareValues(vars._LEVEL_3_inside, LOOPINDEX)</run>
+					<run id="tf_3.14" output="" state="enabled">functions.compareValues(vars._LEVEL_3_inside, loopIndex(0))</run>
+					<run id="tf_3.15" output="_LEVEL_3_inside" state="enabled">functions.addValues(vars._LEVEL_3_inside, vars._STEP)</run>
+				</block>
+				<!-- Check _LEVEL_3_inside values and reset -->
+				<run id="tf_3.16" output="_LEVEL_3_inside" state="enabled">functions.compareValues(vars._LEVEL_3_inside, vars._LOOP)</run>
+				<run id="tf_3.17" output="_LEVEL_3_inside" state="enabled">functions.returnVal(0)</run>
+				<run id="tf_3.18" output="_LEVEL_2_inside" state="enabled">functions.addValues(vars._LEVEL_2_inside, vars._STEP)</run>
+			</block>
+			<!-- Check _LEVEL_2_inside values and reset -->
+			<run id="tf_3.19" output="_LEVEL_2_inside" state="enabled">functions.compareValues(vars._LEVEL_2_inside, vars._LOOP)</run>
+			<run id="tf_3.20" output="_LEVEL_2_inside" state="enabled">functions.returnVal(0)</run>
+			<run id="tf_3.21" output="_LEVEL_1_inside" state="enabled">functions.addValues(vars._LEVEL_1_inside, vars._STEP)</run>
+		</block>
+		<!-- Check _LEVEL_1_inside values and reset -->
+		<run id="tf_3.22" output="_LEVEL_1_inside" state="enabled">functions.compareValues(vars._LEVEL_1_inside, vars._LOOP)</run>
+		<run id="tf_3.23" output="_LEVEL_1_inside" state="enabled">functions.returnVal(0)</run>
+		<run id="tf_3.24" output="_LEVEL_0_inside" state="enabled">functions.addValues(vars._LEVEL_0_inside, vars._STEP)</run>
+	</block>
+	<block id="tb_4" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="ignore" onErrorID="" phase="postconditions" state="enabled" />
+</testCase>

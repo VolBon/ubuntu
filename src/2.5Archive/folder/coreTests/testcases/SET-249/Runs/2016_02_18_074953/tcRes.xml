@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<testCase duration="0.281" fail="1" name="SET-249" pass="0" startdate="20160218" starttime="074953">
+	<block fail="0" pass="0"/>
+	<block fail="0" pass="0"/>
+	<block fail="1" pass="0">
+		<block fail="2" pass="0">
+			<call fail="2" pass="0">functions.raiseError('Intentional exception in execution phase')</call>
+			<call fail="0" pass="0">functions.raiseError('Should not run')</call>
+		</block>
+		<block fail="1" pass="0">
+			<call fail="1" pass="0">functions.raiseError('Intentional exception in execution phase')</call>
+		</block>
+	</block>
+	<block fail="1" pass="0">
+		<call fail="1" pass="0">functions.raiseError('Intentional exception in postcondition phase')</call>
+		<call fail="1" pass="0">functions.compareValues(vars.a, 'a')</call>
+	</block>
+</testCase>

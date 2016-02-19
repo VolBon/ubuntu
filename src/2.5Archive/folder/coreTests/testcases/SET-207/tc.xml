@@ -1,0 +1,32 @@
+<?xml version="1.0" ?>
+<!DOCTYPE testCase SYSTEM "tc_dtd.xml">
+<testCase version="0.1">
+    <scmId />
+    <name>SET-207</name>
+    <metadata>
+        <author>romaomic</author>
+        <externalData />
+        <approver />
+        <modifier />
+    </metadata>
+    <tags/>
+    <description/>
+    
+    <vars>
+        <var name="a">[]</var>
+        <var name="b">[1,3.14,'ring']</var>
+        <var name="v_int">1</var>
+        <var name="v_float">3.14</var>
+        <var name="v_string">'ring'</var>
+    </vars>
+    
+    <block id="tb_1" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="exit" onErrorID="" phase="prerequisites" state="enabled"/>
+    <block id="tb_2" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="ignore" onErrorID="" phase="setup" state="enabled"/>
+    <block id="tb_3" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="ignore" onErrorID="" phase="execution" state="enabled">
+        <run id="tf_3.1"  state="enabled">functions.returnVal(vars.a.append(vars.v_int))</run>
+        <run id="tf_3.1"  state="enabled">functions.returnVal(vars.a.append(vars.v_float))</run>
+        <run id="tf_3.1"  state="enabled">functions.returnVal(vars.a.append(vars.v_string))</run>
+        <run id="tf_3.1" state="enabled">functions.varCheck("compare variables", vars.a, vars.b)</run>
+    </block>
+    <block id="tb_4" loop="1" maxCount="-1" maxSeconds="-1" minCount="-1" minSeconds="-1" onError="ignore" onErrorID="" phase="postconditions" state="enabled"/>
+</testCase>

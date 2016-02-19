@@ -1,0 +1,11 @@
+i=2
+f=2.2
+b=True
+string1='string'
+string2="string"
+d=2005/12/14
+t='22:22:22'
+n=None
+list=[123,3.14, 'ala']
+tuple=(123, 3.14, "ma")
+dict={'k1': 123, "k2": 3.14, 'k3': "kota"}

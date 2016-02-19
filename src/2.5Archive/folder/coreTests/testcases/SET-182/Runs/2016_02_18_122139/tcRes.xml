@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<testCase duration="0.007" fail="0" name="SET-182" pass="1" startdate="20160218" starttime="122139">
+	<block fail="0" pass="0"/>
+	<block fail="0" pass="0"/>
+	<block fail="0" pass="1">
+		<call fail="0" pass="1">functions.compareValues(vars.i, 2)</call>
+		<call fail="0" pass="1">functions.compareValues(vars.f, 2.2)</call>
+		<call fail="0" pass="1">functions.compareValues(vars.b, True)</call>
+		<call fail="0" pass="1">functions.compareValues(vars.string1, 'string')</call>
+		<call fail="0" pass="1">functions.compareValues(vars.string2, &quot;string&quot;)</call>
+		<call fail="0" pass="1">functions.compareValues(vars.d, 2005/12/14)</call>
+		<call fail="0" pass="1">functions.compareValues(vars.t, '22:22:22')</call>
+		<call fail="0" pass="1">functions.compareValues(vars.n, None)</call>
+		<call fail="0" pass="1">functions.compareValues(vars.list, [123, 3.14, 'ala'])</call>
+		<call fail="0" pass="1">functions.compareValues(vars.tuple, (123, 3.14, &quot;ma&quot;))</call>
+		<call fail="0" pass="1">functions.compareValues(vars.dict, {'k1': 123, &quot;k2&quot;: 3.14, 'k3': &quot;kota&quot;})</call>
+	</block>
+	<block fail="0" pass="0"/>
+</testCase>

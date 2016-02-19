@@ -1,0 +1,70 @@
+. appTestCases.py::CoreTest::test_SET_182
+. appTestCases.py::CoreTest::test_SET_183
+. appTestCases.py::CoreTest::test_SET_185
+. appTestCases.py::CoreTest::test_SET_189
+. appTestCases.py::CoreTest::test_SET_192
+. appTestCases.py::CoreTest::test_SET_194
+. appTestCases.py::CoreTest::test_SET_201
+. appTestCases.py::CoreTest::test_SET_202
+. appTestCases.py::CoreTest::test_SET_203
+. appTestCases.py::CoreTest::test_SET_205
+F appTestCases.py::CoreTest::test_SET_206
+ self = <appTestCases.CoreTest testMethod=test_SET_206>
+ 
+     def testMethod(self):
+         # check if param file is defined for a test case
+         paramPath = os.path.join('..', 'params', name + '.txt')
+         if not os.path.exists(paramPath):
+             paramPath = None
+     
+ >       self.runTestCase(name, paramPath)
+ 
+ appTestCases.py:182: 
+ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+ appTestCases.py:168: in runTestCase
+     self.fail(repr(err))
+ E   AssertionError: StandardError("Error in test case 't:\\SamsungEnbTA\\TiGear\\coreTests\\testcases\\SET-206': Cannot find test case file 't:\\SamsungEnbTA\\TiGear\\coreTests\\testcases\\SET-206\\tc.xml'",)
+. appTestCases.py::CoreTest::test_SET_207
+. appTestCases.py::CoreTest::test_SET_208
+. appTestCases.py::CoreTest::test_SET_209
+. appTestCases.py::CoreTest::test_SET_221
+. appTestCases.py::CoreTest::test_SET_224
+. appTestCases.py::CoreTest::test_SET_227
+F appTestCases.py::CoreTest::test_SET_229
+ self = <appTestCases.CoreTest testMethod=test_SET_229>
+ 
+     def testMethod(self):
+         # check if param file is defined for a test case
+         paramPath = os.path.join('..', 'params', name + '.txt')
+         if not os.path.exists(paramPath):
+             paramPath = None
+     
+ >       self.runTestCase(name, paramPath)
+ 
+ appTestCases.py:182: 
+ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+ appTestCases.py:168: in runTestCase
+     self.fail(repr(err))
+ E   AssertionError: TestConfigurationDefError("Error loading test configuration file t:\\SamsungEnbTA\\TiGear\\coreTests\\params\\SET-229.txt. Error in data file 't:\\SamsungEnbTA\\TiGear\\coreTests\\params\\SET-229.txt', line 'import ./SET-190/par.txt': [Error 3] The system cannot find the path specified: 't:\\\\SamsungEnbTA\\\\TiGear\\\\coreTests\\\\params\\\\./SET-190/par.txt'",)
+. appTestCases.py::CoreTest::test_SET_232
+. appTestCases.py::CoreTest::test_SET_233
+F appTestCases.py::CoreTest::test_SET_238
+ self = <appTestCases.CoreTest testMethod=test_SET_238>
+ 
+     def testMethod(self):
+         # check if param file is defined for a test case
+         paramPath = os.path.join('..', 'params', name + '.txt')
+         if not os.path.exists(paramPath):
+             paramPath = None
+     
+ >       self.runTestCase(name, paramPath)
+ 
+ appTestCases.py:182: 
+ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+ appTestCases.py:168: in runTestCase
+     self.fail(repr(err))
+ E   AssertionError: TestConfigurationDefError("Error loading test configuration file t:\\SamsungEnbTA\\TiGear\\coreTests\\params\\SET-238.txt. Error in data file 't:\\SamsungEnbTA\\TiGear\\coreTests\\params\\SET-238.txt', line 'import ./SET-190/par.txt': [Error 3] The system cannot find the path specified: 't:\\\\SamsungEnbTA\\\\TiGear\\\\coreTests\\\\params\\\\./SET-190/par.txt'",)
+. appTestCases.py::CoreTest::test_SET_241
+. appTestCases.py::CoreTest::test_SET_242
+. appTestCases.py::CoreTest::test_SET_246
+. appTestCases.py::CoreTest::test_SET_247

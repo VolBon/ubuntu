@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<testCase duration="0.006" fail="0" name="SET-202" pass="1" startdate="20160219" starttime="083436">
+	<block fail="0" pass="0"/>
+	<block fail="0" pass="0"/>
+	<block fail="0" pass="1">
+		<call fail="0" pass="1">functions.compareValues(vars.dicInt['k1'], 2)</call>
+		<call fail="0" pass="1">functions.compareValues(vars.dicInt['k2'], 3)</call>
+		<call fail="0" pass="1">functions.compareValues(vars.dicInt['k3'], 4)</call>
+		<call fail="0" pass="1">functions.compareValues(vars.dicFloat['k1'], 2.2)</call>
+		<call fail="0" pass="1">functions.compareValues(vars.dicFloat['k2'], 4.4)</call>
+		<call fail="0" pass="1">functions.compareValues(vars.dicFloat['k3'], 5.5)</call>
+		<call fail="0" pass="1">functions.compareValues(vars.dicString['k1'], 'ala')</call>
+		<call fail="0" pass="1">functions.compareValues(vars.dicString['k2'], 'ma')</call>
+		<call fail="0" pass="1">functions.compareValues(vars.dicString['k3'], 'kota')</call>
+	</block>
+	<block fail="0" pass="0"/>
+</testCase>
