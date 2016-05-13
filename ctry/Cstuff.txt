@@ -1,0 +1,1 @@
+Scanf("%5s", value) -  use number of characters to read, otherwise segmentation fault (Can use fgets instead, its only for strings)
