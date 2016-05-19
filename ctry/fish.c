@@ -1,19 +1,25 @@
 #include <stdio.h>
 
-struct fish {
+typedef struct test {
+	const char *food;
+	int hours;
+	} test_type;
+
+typedef struct fish {
 const char *name;
 const char *species;
 int teeth;
 int age;
-};
+test_type test1;
+} fish_type;
 
-void catalog(struct fish f)
+void catalog(fish_type f)
 {
-printf("%s is a %s with %i teeth. He is %i\n",
-f.name , f.species , f.teeth , f.age );
+printf("%s is a %s with %i teeth. He is %i ///// hours %i\n",
+f.name , f.species , f.teeth , f.age , f.test1.hours );
 }
 
-void label(struct fish f)
+void label(fish_type f)
 {
 printf("%s %s %i %i\n",
 f.name , f.species , f.teeth , f.age );
@@ -22,7 +28,7 @@ f.name , f.species , f.teeth , f.age );
 int main()
 {
 
-struct fish snappy = {"Snappy", "Piranha", 69, 4};
+fish_type snappy = {"Snappy", "Piranha", 69, 4, {"me", 7}};
 catalog(snappy);
 label(snappy);
 return 0;

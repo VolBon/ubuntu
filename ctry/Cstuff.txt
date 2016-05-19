@@ -1,1 +1,7 @@
 Scanf("%5s", value) -  use number of characters to read, otherwise segmentation fault (Can use fgets instead, its only for strings)
+
+struct(structure with different datatypes and values), union(one place for all, datatype important), enum(stores symbols), BITFILEDS (customs number of bits, unsigned int)
+
+Pointer to functiondeclaration: int (*warp_fn)(int);  warp_fn = go_to_warp_speed;  warp_fn(4);
+
+PAGE - 333 DO THIS!!
