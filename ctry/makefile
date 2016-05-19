@@ -1,4 +1,4 @@
-encrypt.o: fish.c
+fish.o: fish.c
 	gcc -c fish.c
 tree: fish.o
 	gcc fish.o -o tree
