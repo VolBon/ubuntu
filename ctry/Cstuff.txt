@@ -2,6 +2,6 @@ Scanf("%5s", value) -  use number of characters to read, otherwise segmentation 
 
 struct(structure with different datatypes and values), union(one place for all, datatype important), enum(stores symbols), BITFILEDS (customs number of bits, unsigned int)
 
-Pointer to functiondeclaration: int (*warp_fn)(int);  warp_fn = go_to_warp_speed;  warp_fn(4);
+Pointer to functiondeclaration: int (*warp_fn)(int);  warp_fn = go_to_warp_speed;  warp_fn(4); // return-type(*var-name)(param-types).
 
 PAGE - 333 DO THIS!!
